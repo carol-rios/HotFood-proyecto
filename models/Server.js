@@ -10,10 +10,10 @@ import reservas from '../routes/reservas.js'
 import usuario from '../routes/usuario.js'
 import mesa from '../routes/mesa.js'
 
-class Server{
-    constructor(){
-        
-        this.port= process.env.PORT
+class Server {
+    constructor() {
+
+        this.port = process.env.PORT;
 
         this.app = express();
 
@@ -24,36 +24,33 @@ class Server{
         this.routes();
     }
 
-    routes(){
-        
-        this.app.use('/api/categoria',  categoria);
-        this.app.use('/api/menu',  menu);
-        this.app.use('/api/pedido',  pedido);
-        this.app.use('/api/registroDomicilio',  registroDomicilio);
-        this.app.use('/api/reservas',  reservas);
-        this.app.use('/api/usuario',  usuario);
+    routes() {
+
+        this.app.use('/api/categoria', categoria);
+        this.app.use('/api/menu', menu);
+        this.app.use('/api/pedido', pedido);
+        this.app.use('/api/registroDomicilio', registroDomicilio);
+        this.app.use('/api/reservas', reservas);
+        this.app.use('/api/usuario', usuario);
         this.app.use('/api/mesa', mesa);
-      
+
     }
 
-    async conectarBD(){
-      await dbConection();
+    async conectarBD() {
+        await dbConection();
     }
 
-    middlewares(){
+    middlewares() {
         this.app.use(cors());
         this.app.use(express.json());
         this.app.use(express.static('public'));
     }
 
-    listen(){
-        this.app.listen(this.port,()=>{
-            console.log(`Servidor corriendo en el puerto ${this.port}`);
+    listen() {
+        this.app.listen(this.port, () => {
+            console.log(`Servidor corriendo en el puerto ${process.env.PORT}`);
         })
     }
 }
 
 export default Server;
-
-
-
