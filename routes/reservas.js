@@ -8,7 +8,7 @@ import existeReservasByID from '../helpers/reservas.js';
 
 const router = Router();
 
-router.get('/',  [ //No devuelve la información de la base de datos
+router.get('/',  [ 
     validarJWT,
     validarROLES ('ADMIN_ROL') ,
 ],ReservasControllers.reservasGet);
@@ -21,8 +21,8 @@ router.post('/',  [
     check('Nombres', 'EL nombre es obligatorio').not().isEmpty(),
     check('Email', 'El email es obligatorio').not().isEmpty(),
     check('Telefono', 'El teléfono es obligatorio').not().isEmpty(),
-    check('CantPersonas', 'La cantidad de personas es obligatorio').not().isEmpty(),
- 
+    check('Fecha', 'La Fecha es obligatorio').not().isEmpty(),
+    check('Hora', 'La Hora es obligatorio').not().isEmpty(),
     validarCampos
 ],ReservasControllers.reservasPost);
 

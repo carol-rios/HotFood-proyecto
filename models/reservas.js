@@ -6,7 +6,7 @@ const ReservasSchema = mongoose.Schema({
     Email: { type: String, required: true, maxlength: 25, unique: true },
     Telefono: { type: String, required: true, maxlength: 10 }, 
     Fecha: { type: Date, required: true },
-  //  Hora: { type: time },   
+    Hora: { type: String, required: true },
 
     CreatedAt: { type: Date, default: Date.now }//NO SE MODIFICA
 

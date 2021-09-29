@@ -22,7 +22,6 @@ validarROLES ('ADMIN_ROL') ,
 check('Nombre', 'Nombre es obligatorio').not().isEmpty(),
 check('Categoria', 'Categoria es obligatoria').not().isEmpty(),
 check('Precio', 'Precio es obligatorio').not().isEmpty(),
-check('Descripcion', 'Descripción es obligatoria').not().isEmpty(),
 validarCampos
 ], MenuControllers.menuPost);
 

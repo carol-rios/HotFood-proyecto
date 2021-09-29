@@ -8,7 +8,7 @@ import existeRegistroDomicilioByID from '../helpers/registroDomicilio.js';
 
 const router = Router();
 
-router.get('/', [ //No me devulve lo que hay en  la base de datos
+router.get('/', [
     validarJWT,
     validarROLES ('ADMIN_ROL') ,
 ],RegistroDomicilioControllers.registroDomicilioGet);

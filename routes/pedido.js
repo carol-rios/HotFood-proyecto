@@ -22,7 +22,7 @@ router.post('/', [
     validarROLES ('ADMIN_ROL') ,
     check('Cantidad', 'Cantidad es obligatorio').not().isEmpty(),
     check('Valor_Total', 'Valor Total es obligatoria').not().isEmpty(),
- 
+    check('id_domicilio', 'El Id del domicilio es obligatoria').not().isEmpty(),
     validarCampos
     ], PedidoControllers.pedidoPost);
 

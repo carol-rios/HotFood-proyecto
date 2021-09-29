@@ -8,7 +8,7 @@ import existeMesasByID from '../helpers/reservas.js';
 
 const router = Router();
 
-router.get('/',  [ //No devuelve la información de la base de datos
+router.get('/',  [ 
     validarJWT,
 ],MesasControllers.mesaGet);
 
@@ -19,7 +19,6 @@ router.post('/',  [
     validarROLES ('ADMIN_ROL') ,
     check('CantMesas', 'La cantidad de mesas es obligatorio').not().isEmpty(),
     check('NumMesas', 'El número de mesa es obligatorio').not().isEmpty(),
-  
     validarCampos
 ],MesasControllers.mesaPost);
 
