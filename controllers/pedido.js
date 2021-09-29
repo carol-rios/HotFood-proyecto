@@ -2,8 +2,8 @@ import Pedido from '../models/pedido.js'
 
 const PedidoControllers ={
 pedidoPost: async (req,res)=> {
-        const {Cantidad,Valor_total,Descripcion} = req.body;
-        const pedido = Pedido({Cantidad,Valor_total,Descripcion});
+        const {Cantidad,Valor_total,Descripcion, id_domicilio} = req.body;
+        const pedido = Pedido({Cantidad,Valor_total,Descripcion, id_domicilio});
 
         pedido.save();
 
@@ -19,10 +19,11 @@ pedidoPost: async (req,res)=> {
                 $or: [
                     {Cantidad: new RegExp(query, 'i')},
                     {Valor_total: new RegExp(query, 'i')},
-                    {Descripcion: new RegExp(query, 'i')}
+                    {Descripcion: new RegExp(query, 'i')},
+                    {id_domicilio: new RegExp(query, 'i')}
                 ]
                 
-            }).populate({path:'id_domicilio',select:['Nombres',]})
+            }).populate({path:'id_domicilio',select:['Nombres', 'Apellidos', 'Telefono', 'Direccion']})
             detalles.map((producto))
     
             res.json ({

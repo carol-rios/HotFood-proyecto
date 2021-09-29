@@ -3,8 +3,8 @@ import Reservas from '../models/reservas.js'
 const ReservasControllers ={
 
     reservasPost: async (req,res)=> {
-        const {Nombres, Email, Telefono} = req.body;
-        const reservas = Reservas({Nombres, Email, Telefono});
+        const {Nombres, Email, Telefono, Fecha, Hora } = req.body;
+        const reservas = Reservas({Nombres, Email, Telefono, Fecha, Hora});
 
         reservas.save();
 
@@ -20,8 +20,9 @@ const ReservasControllers ={
                 $or: [
                     {Nombres: new RegExp(query, 'i')},
                     {Email: new RegExp(query, 'i')},
-                    {Telefono: new RegExp(query, 'i')}
-                
+                    {Telefono: new RegExp(query, 'i')},
+                    {Fecha: new RegExp(query, 'i')},
+                    {Hora: new RegExp(query, 'i')}                
                 ]
                 
             });
